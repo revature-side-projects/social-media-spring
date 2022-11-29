@@ -27,7 +27,7 @@ public class PostController {
         this.postService = postService;
     }
     
-    @Authorized
+
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
     	return ResponseEntity.ok(this.postService.getAll());
@@ -38,4 +38,10 @@ public class PostController {
     public ResponseEntity<Post> upsertPost(@RequestBody Post post) {
     	return ResponseEntity.ok(this.postService.upsert(post));
     }
+
+    @GetMapping("/feed")
+    public ResponseEntity<List<Post>> getAllTopPosts() {
+        return ResponseEntity.ok(this.postService.getAllTop());
+    }
+
 }
